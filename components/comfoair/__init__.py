@@ -3,7 +3,7 @@ import esphome.codegen as cg
 import esphome.cpp_generator as cppg
 import esphome.config_validation as cv
 from esphome import pins
-from esphome.const import CONF_ID, CONF_VERSION, CONF_NAME, UNIT_PERCENT, CONF_RX_PIN, CONF_TX_PIN, STATE_CLASS_MEASUREMENT
+from esphome.const import CONF_ID, CONF_VERSION, CONF_NAME, UNIT_PERCENT, CONF_RX_PIN, CONF_TX_PIN, DEVICE_CLASS_TEMPERATURE, STATE_CLASS_MEASUREMENT
 from esphome.components import text_sensor, binary_sensor, sensor
 from enum import Enum
 
@@ -23,58 +23,58 @@ class ComfoNumConvs(Enum):
     INT16 = 3
 
 sensors = {
-    "fan_speed":          {"unit": "", "PDO": 65, "CONV": ComfoNumConvs.UINT8, "state_class": STATE_CLASS_MEASUREMENT},
-    "next_fan_change":    {"unit": "s", "PDO": 81, "CONV": ComfoNumConvs.UINT32, "state_class": STATE_CLASS_MEASUREMENT},
-    "next_bypass_change": {"unit": "s", "PDO": 82, "CONV": ComfoNumConvs.UINT32, "state_class": STATE_CLASS_MEASUREMENT},
+    "fan_speed":          {"unit": "", "PDO": 65, "CONV": ComfoNumConvs.UINT8, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT},
+    "next_fan_change":    {"unit": "s", "PDO": 81, "CONV": ComfoNumConvs.UINT32, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT},
+    "next_bypass_change": {"unit": "s", "PDO": 82, "CONV": ComfoNumConvs.UINT32, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT},
 
 
 
-    "exhaust_fan_duty":  {"unit":"%",    "PDO": 117, "CONV": ComfoNumConvs.UINT8, "state_class": STATE_CLASS_MEASUREMENT },
-    "supply_fan_duty":   {"unit":"%",    "PDO": 118, "CONV": ComfoNumConvs.UINT8, "state_class": STATE_CLASS_MEASUREMENT },
-    "exhaust_fan_flow":  {"unit":"m³/h", "PDO": 119, "CONV": ComfoNumConvs.UINT16, "state_class": STATE_CLASS_MEASUREMENT},
-    "supply_fan_flow":   {"unit":"m³/h", "PDO": 120, "CONV": ComfoNumConvs.UINT16, "state_class": STATE_CLASS_MEASUREMENT},
-    "exhaust_fan_speed": {"unit":"rpm",  "PDO": 121, "CONV": ComfoNumConvs.UINT16, "state_class": STATE_CLASS_MEASUREMENT},
-    "supply_fan_speed":  {"unit":"rpm",  "PDO": 122, "CONV": ComfoNumConvs.UINT16, "state_class": STATE_CLASS_MEASUREMENT},
+    "exhaust_fan_duty":  {"unit":"%",    "PDO": 117, "CONV": ComfoNumConvs.UINT8, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT },
+    "supply_fan_duty":   {"unit":"%",    "PDO": 118, "CONV": ComfoNumConvs.UINT8, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT },
+    "exhaust_fan_flow":  {"unit":"m³/h", "PDO": 119, "CONV": ComfoNumConvs.UINT16, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT},
+    "supply_fan_flow":   {"unit":"m³/h", "PDO": 120, "CONV": ComfoNumConvs.UINT16, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT},
+    "exhaust_fan_speed": {"unit":"rpm",  "PDO": 121, "CONV": ComfoNumConvs.UINT16, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT},
+    "supply_fan_speed":  {"unit":"rpm",  "PDO": 122, "CONV": ComfoNumConvs.UINT16, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT},
 
-    "power_consumption_current":      {"unit": "W",   "PDO": 128, "CONV": ComfoNumConvs.UINT16, "state_class": STATE_CLASS_MEASUREMENT},
-    "energy_consumption_ytd":         {"unit": "kWh", "PDO": 129, "CONV": ComfoNumConvs.UINT16, "state_class": STATE_CLASS_MEASUREMENT},
-    "energy_consumption_since_start": {"unit": "kWh", "PDO": 130, "CONV": ComfoNumConvs.UINT16, "state_class": STATE_CLASS_MEASUREMENT},
+    "power_consumption_current":      {"unit": "W",   "PDO": 128, "CONV": ComfoNumConvs.UINT16, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT},
+    "energy_consumption_ytd":         {"unit": "kWh", "PDO": 129, "CONV": ComfoNumConvs.UINT16, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT},
+    "energy_consumption_since_start": {"unit": "kWh", "PDO": 130, "CONV": ComfoNumConvs.UINT16, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT},
 
-    "days_remaining_filter": {"unit": "days", "PDO": 192, "CONV": ComfoNumConvs.UINT16, "state_class": STATE_CLASS_MEASUREMENT},
+    "days_remaining_filter": {"unit": "days", "PDO": 192, "CONV": ComfoNumConvs.UINT16, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT},
 
-    "avoided_heating_actual": {"unit": "W", "PDO": 213, "CONV": ComfoNumConvs.UINT16, "state_class": STATE_CLASS_MEASUREMENT, "div": 100},
-    "avoided_heating_ytd":    {"unit": "kWh", "PDO": 214, "CONV": ComfoNumConvs.UINT16, "state_class": STATE_CLASS_MEASUREMENT},
-    "avoided_heating_total":  {"unit": "kWh", "PDO": 215, "CONV": ComfoNumConvs.UINT16, "state_class": STATE_CLASS_MEASUREMENT},
+    "avoided_heating_actual": {"unit": "W", "PDO": 213, "CONV": ComfoNumConvs.UINT16, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT, "div": 100},
+    "avoided_heating_ytd":    {"unit": "kWh", "PDO": 214, "CONV": ComfoNumConvs.UINT16, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT},
+    "avoided_heating_total":  {"unit": "kWh", "PDO": 215, "CONV": ComfoNumConvs.UINT16, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT},
 
-    "avoided_cooling_actual": {"unit": "W", "PDO": 216, "CONV": ComfoNumConvs.UINT16, "state_class": STATE_CLASS_MEASUREMENT, "div": 100},
-    "avoided_cooling_ytd":    {"unit": "kWh", "PDO": 217, "CONV": ComfoNumConvs.UINT16, "state_class": STATE_CLASS_MEASUREMENT},
-    "avoided_cooling_total":  {"unit": "kWh", "PDO": 218, "CONV": ComfoNumConvs.UINT16, "state_class": STATE_CLASS_MEASUREMENT},
+    "avoided_cooling_actual": {"unit": "W", "PDO": 216, "CONV": ComfoNumConvs.UINT16, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT, "div": 100},
+    "avoided_cooling_ytd":    {"unit": "kWh", "PDO": 217, "CONV": ComfoNumConvs.UINT16, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT},
+    "avoided_cooling_total":  {"unit": "kWh", "PDO": 218, "CONV": ComfoNumConvs.UINT16, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT},
 
-    "bypass_state":  {"unit": "%", "PDO": 227, "CONV": ComfoNumConvs.UINT8, "state_class": STATE_CLASS_MEASUREMENT},
+    "bypass_state":  {"unit": "%", "PDO": 227, "CONV": ComfoNumConvs.UINT8, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT},
 
     # temps
-    "rmot":                     {"unit": "°C", "PDO": 209, "CONV": ComfoNumConvs.INT16, "state_class": STATE_CLASS_MEASUREMENT, "div": 10},
-    "target_temp":              {"unit": "°C", "PDO": 212, "CONV": ComfoNumConvs.UINT16, "state_class": STATE_CLASS_MEASUREMENT, "div": 10},
-    "pre_heater_temp_before":   {"unit": "°C", "PDO": 220, "CONV": ComfoNumConvs.INT16, "state_class": STATE_CLASS_MEASUREMENT, "div": 10},
-    "post_heater_temp_before":  {"unit": "°C", "PDO": 221, "CONV": ComfoNumConvs.INT16, "state_class": STATE_CLASS_MEASUREMENT, "div": 10},
-    "extract_air_temp":         {"unit": "°C", "PDO": 274, "CONV": ComfoNumConvs.INT16, "state_class": STATE_CLASS_MEASUREMENT, "div": 10},
-    "exhaust_air_temp":         {"unit": "°C", "PDO": 275, "CONV": ComfoNumConvs.INT16, "state_class": STATE_CLASS_MEASUREMENT, "div": 10},
-    "outdoor_air_temp":         {"unit": "°C", "PDO": 276, "CONV": ComfoNumConvs.INT16, "state_class": STATE_CLASS_MEASUREMENT, "div": 10},
+    "rmot":                     {"unit": "°C", "PDO": 209, "CONV": ComfoNumConvs.INT16, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT, "div": 10},
+    "target_temp":              {"unit": "°C", "PDO": 212, "CONV": ComfoNumConvs.UINT16, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT, "div": 10},
+    "pre_heater_temp_before":   {"unit": "°C", "PDO": 220, "CONV": ComfoNumConvs.INT16, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT, "div": 10},
+    "post_heater_temp_before":  {"unit": "°C", "PDO": 221, "CONV": ComfoNumConvs.INT16, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT, "div": 10},
+    "extract_air_temp":         {"unit": "°C", "PDO": 274, "CONV": ComfoNumConvs.INT16, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT, "div": 10},
+    "exhaust_air_temp":         {"unit": "°C", "PDO": 275, "CONV": ComfoNumConvs.INT16, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT, "div": 10},
+    "outdoor_air_temp":         {"unit": "°C", "PDO": 276, "CONV": ComfoNumConvs.INT16, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT, "div": 10},
 
-    "pre_heater_temp_after":    {"unit": "°C", "PDO": 277, "CONV": ComfoNumConvs.INT16, "state_class": STATE_CLASS_MEASUREMENT, "div": 10},
-    "post_heater_temp_after":   {"unit": "°C", "PDO": 278, "CONV": ComfoNumConvs.INT16, "state_class": STATE_CLASS_MEASUREMENT, "div": 10},
+    "pre_heater_temp_after":    {"unit": "°C", "PDO": 277, "CONV": ComfoNumConvs.INT16, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT, "div": 10},
+    "post_heater_temp_after":   {"unit": "°C", "PDO": 278, "CONV": ComfoNumConvs.INT16, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT, "div": 10},
 
 
     # humidity
-    "extract_air_humidity":   {"unit": "%", "PDO": 290, "CONV": ComfoNumConvs.UINT8, "state_class": STATE_CLASS_MEASUREMENT},
-    "exhaust_air_humidity":   {"unit": "%", "PDO": 291, "CONV": ComfoNumConvs.UINT8, "state_class": STATE_CLASS_MEASUREMENT},
-    "outdoor_air_humidity":   {"unit": "%", "PDO": 292, "CONV": ComfoNumConvs.UINT8, "state_class": STATE_CLASS_MEASUREMENT},
-    "pre_heater_hum_after":   {"unit": "%", "PDO": 293, "CONV": ComfoNumConvs.UINT8, "state_class": STATE_CLASS_MEASUREMENT},
-    "supply_air_humidity":    {"unit": "%", "PDO": 294, "CONV": ComfoNumConvs.UINT8, "state_class": STATE_CLASS_MEASUREMENT},
+    "extract_air_humidity":   {"unit": "%", "PDO": 290, "CONV": ComfoNumConvs.UINT8, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT},
+    "exhaust_air_humidity":   {"unit": "%", "PDO": 291, "CONV": ComfoNumConvs.UINT8, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT},
+    "outdoor_air_humidity":   {"unit": "%", "PDO": 292, "CONV": ComfoNumConvs.UINT8, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT},
+    "pre_heater_hum_after":   {"unit": "%", "PDO": 293, "CONV": ComfoNumConvs.UINT8, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT},
+    "supply_air_humidity":    {"unit": "%", "PDO": 294, "CONV": ComfoNumConvs.UINT8, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT},
 
     # summer/winter mode
-    "heating_season":   {"unit": "", "PDO": 210, "CONV": ComfoNumConvs.UINT8, "state_class": STATE_CLASS_MEASUREMENT},
-    "cooling_season":   {"unit": "", "PDO": 211, "CONV": ComfoNumConvs.UINT8, "state_class": STATE_CLASS_MEASUREMENT},
+    "heating_season":   {"unit": "", "PDO": 210, "CONV": ComfoNumConvs.UINT8, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT},
+    "cooling_season":   {"unit": "", "PDO": 211, "CONV": ComfoNumConvs.UINT8, "device_class": DEVICE_CLASS_TEMPERATURE, "state_class": STATE_CLASS_MEASUREMENT},
 
 
 }
@@ -109,7 +109,7 @@ return vals[0] == 0 ? "auto": (vals[0] == 1 ? "cold": "warm");
 
 GEN_SENSORS_SCHEMA = {
     cv.Optional(key, default=key): cv.maybe_simple_value(
-        sensor.sensor_schema(unit_of_measurement=value['unit'], accuracy_decimals=math.trunc(math.log10(value['div'])) if 'div' in value else 0), key=CONF_NAME, accuracy_decimals=2, state_class=value['state_class'] )
+        sensor.sensor_schema(unit_of_measurement=value['unit'], accuracy_decimals=math.trunc(math.log10(value['div'])) if 'div' in value else 0), key=CONF_NAME, accuracy_decimals=2, device_class=value['device_class'], state_class=value['state_class'] )
     for key, value in sensors.items()
 }
 
@@ -146,7 +146,7 @@ async def to_code(config):
     for key, value in sensors.items():
         sens = await sensor.new_sensor(config[key])
 
-        cg.add(var.register_sensor(sens, value['PDO'], value['CONV'].value, value['div'] if 'div' in value else 1, value['state_class'].value))
+        cg.add(var.register_sensor(sens, value['PDO'], value['CONV'].value, value['div'] if 'div' in value else 1))
 
     for key, value in textSensors.items():
         sens = await text_sensor.new_text_sensor(config[key])
