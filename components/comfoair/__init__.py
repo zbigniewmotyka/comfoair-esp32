@@ -146,7 +146,7 @@ async def to_code(config):
     for key, value in sensors.items():
         sens = await sensor.new_sensor(config[key])
 
-        cg.add(var.register_sensor(sens, value['PDO'], value['CONV'].value, value['div'] if 'div' in value else 1))
+        cg.add(var.register_sensor(sens, value['PDO'], value['CONV'].value, value['div'] if 'div' in value else 1, value['state_class'].value))
 
     for key, value in textSensors.items():
         sens = await text_sensor.new_text_sensor(config[key])
