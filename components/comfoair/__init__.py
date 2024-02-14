@@ -109,7 +109,7 @@ return vals[0] == 0 ? "auto": (vals[0] == 1 ? "cold": "warm");
 
 GEN_SENSORS_SCHEMA = {
     cv.Optional(key, default=key): cv.maybe_simple_value(
-        sensor.sensor_schema(unit_of_measurement=value['unit'], accuracy_decimals=math.trunc(math.log10(value['div'])) if 'div' in value else 0), key=CONF_NAME, accuracy_decimals=2 )
+        sensor.sensor_schema(unit_of_measurement=value['unit'], accuracy_decimals=math.trunc(math.log10(value['div'])) if 'div' in value else 0), key=CONF_NAME, accuracy_decimals=2, state_class=value['state_class'] )
     for key, value in sensors.items()
 }
 
