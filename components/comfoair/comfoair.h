@@ -22,11 +22,13 @@ class Comfoair: public Component, public esphome::api::CustomAPIDevice {
  public:
   void set_rx(int rx) { rx_ = rx; }
   void set_tx(int tx) { tx_ = tx; }
-  void register_sensor(sensor::Sensor *obj, int PDOID, int conversionType, int divider) {
+  void register_sensor(sensor::Sensor *obj, int PDOID, int conversionType, int divider, string deviceClass, string stateClass) {
     ComfoSensor<sensor::Sensor, int> *cs = new ComfoSensor<sensor::Sensor, int>();
     cs->sensor = obj;
     cs->divider = divider;
     cs->conversion = conversionType;
+    cs->device_class = deviceClass;
+    cs->state_class = stateClass;
     sensors[PDOID] = *cs;
   }
   void register_textSensor(text_sensor::TextSensor *obj, int PDOID, std::string (*convLambda)(uint8_t *) ) {
