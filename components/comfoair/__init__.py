@@ -23,7 +23,7 @@ class ComfoNumConvs(Enum):
     INT16 = 3
 
 sensors = {
-    "fan_speed":          {"unit": "", "PDO": 65, "CONV": ComfoNumConvs.UINT8},
+    "fan_speed":          {"unit": "", "PDO": 65, "CONV": ComfoNumConvs.UINT8, "state_class": "measurement"},
     "next_fan_change":    {"unit": "s", "PDO": 81, "CONV": ComfoNumConvs.UINT32},
     "next_bypass_change": {"unit": "s", "PDO": 82, "CONV": ComfoNumConvs.UINT32},
 
