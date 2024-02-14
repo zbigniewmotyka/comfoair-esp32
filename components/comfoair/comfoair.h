@@ -16,13 +16,15 @@ class ComfoSensor {
     T* sensor;
     float divider;
     CONV conversion;
+    string device_class;
+    string state_class;
 };
 
 class Comfoair: public Component, public esphome::api::CustomAPIDevice {
  public:
   void set_rx(int rx) { rx_ = rx; }
   void set_tx(int tx) { tx_ = tx; }
-  void register_sensor(sensor::Sensor *obj, int PDOID, int conversionType, int divider, string deviceClass, string stateClass) {
+  void register_sensor(sensor::Sensor *obj, int PDOID, int conversionType, int divider, string device_class, string state_class) {
     ComfoSensor<sensor::Sensor, int> *cs = new ComfoSensor<sensor::Sensor, int>();
     cs->sensor = obj;
     cs->divider = divider;
