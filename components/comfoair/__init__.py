@@ -3,7 +3,7 @@ import esphome.codegen as cg
 import esphome.cpp_generator as cppg
 import esphome.config_validation as cv
 from esphome import pins
-from esphome.const import CONF_ID, CONF_VERSION, CONF_NAME, UNIT_PERCENT, CONF_RX_PIN, CONF_TX_PIN
+from esphome.const import CONF_ID, CONF_VERSION, CONF_NAME, UNIT_PERCENT, CONF_RX_PIN, CONF_TX_PIN, STATE_CLASS_MEASUREMENT
 from esphome.components import text_sensor, binary_sensor, sensor
 from enum import Enum
 
@@ -23,18 +23,18 @@ class ComfoNumConvs(Enum):
     INT16 = 3
 
 sensors = {
-    "fan_speed":          {"unit": "", "PDO": 65, "CONV": ComfoNumConvs.UINT8, "state_class": "measurement"},
-    "next_fan_change":    {"unit": "s", "PDO": 81, "CONV": ComfoNumConvs.UINT32},
-    "next_bypass_change": {"unit": "s", "PDO": 82, "CONV": ComfoNumConvs.UINT32},
+    "fan_speed":          {"unit": "", "PDO": 65, "CONV": ComfoNumConvs.UINT8, "state_class": STATE_CLASS_MEASUREMENT},
+    "next_fan_change":    {"unit": "s", "PDO": 81, "CONV": ComfoNumConvs.UINT32, "state_class": STATE_CLASS_MEASUREMENT},
+    "next_bypass_change": {"unit": "s", "PDO": 82, "CONV": ComfoNumConvs.UINT32, "state_class": STATE_CLASS_MEASUREMENT},
 
 
 
-    "exhaust_fan_duty":  {"unit":"%",    "PDO": 117, "CONV": ComfoNumConvs.UINT8 },
-    "supply_fan_duty":   {"unit":"%",    "PDO": 118, "CONV": ComfoNumConvs.UINT8 },
-    "exhaust_fan_flow":  {"unit":"m³/h", "PDO": 119, "CONV": ComfoNumConvs.UINT16},
-    "supply_fan_flow":   {"unit":"m³/h", "PDO": 120, "CONV": ComfoNumConvs.UINT16},
-    "exhaust_fan_speed": {"unit":"rpm",  "PDO": 121, "CONV": ComfoNumConvs.UINT16},
-    "supply_fan_speed":  {"unit":"rpm",  "PDO": 122, "CONV": ComfoNumConvs.UINT16},
+    "exhaust_fan_duty":  {"unit":"%",    "PDO": 117, "CONV": ComfoNumConvs.UINT8, "state_class": STATE_CLASS_MEASUREMENT },
+    "supply_fan_duty":   {"unit":"%",    "PDO": 118, "CONV": ComfoNumConvs.UINT8, "state_class": STATE_CLASS_MEASUREMENT },
+    "exhaust_fan_flow":  {"unit":"m³/h", "PDO": 119, "CONV": ComfoNumConvs.UINT16, "state_class": STATE_CLASS_MEASUREMENT},
+    "supply_fan_flow":   {"unit":"m³/h", "PDO": 120, "CONV": ComfoNumConvs.UINT16, "state_class": STATE_CLASS_MEASUREMENT},
+    "exhaust_fan_speed": {"unit":"rpm",  "PDO": 121, "CONV": ComfoNumConvs.UINT16, "state_class": STATE_CLASS_MEASUREMENT},
+    "supply_fan_speed":  {"unit":"rpm",  "PDO": 122, "CONV": ComfoNumConvs.UINT16, "state_class": STATE_CLASS_MEASUREMENT},
 
     "power_consumption_current":      {"unit": "W",   "PDO": 128, "CONV": ComfoNumConvs.UINT16},
     "energy_consumption_ytd":         {"unit": "kWh", "PDO": 129, "CONV": ComfoNumConvs.UINT16},
